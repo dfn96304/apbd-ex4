@@ -23,9 +23,17 @@ public class BooksController : ControllerBase
         return Ok(books);
     }
 
-    /*[HttpPost]
+    [HttpPost]
     public async Task<IActionResult> NewBook([FromBody] NewBookDTO book)
     {
-        
-    }*/
+        try
+        {
+            await /* Exceptions do not propagate otherwise! */ _dbService.NewBook(book);
+            return Created();
+        }
+        catch (BadHttpRequestException e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
 }
