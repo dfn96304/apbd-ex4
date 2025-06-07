@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace apbd_ex4.Models;
 
-[PrimaryKey(nameof(Book), nameof(Author))]
+[PrimaryKey(nameof(IdBook), nameof(IdAuthor))] // IdBook, not Book !!!
 public class BookAuthor
 {
     [ForeignKey(nameof(Book))] [Required]
